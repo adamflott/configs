@@ -1,4 +1,4 @@
-# Adam Flott <adam@npjh.com> Zsh config
+# Adam Flott <adam@npjh.com> ZSH config
 
 # This file is sourced only for interactive shells. It should contain
 # commands to set up aliases, functions, options, key bindings, etc.
