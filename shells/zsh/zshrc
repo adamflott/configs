@@ -1,0 +1,117 @@
+# Adam Flott <adam@npjh.com> Zsh config
+
+# This file is sourced only for interactive shells. It should contain
+# commands to set up aliases, functions, options, key bindings, etc.
+
+ROOT=$HOME
+
+if [ $ZDOTDIR ]; then
+    ROOT=$ZDOTDIR
+fi
+
+# All portable shell functions, aliases, etc should go here. This file
+# is ZSH specific
+source $ROOT/.shells/portable.rc
+
+# Shell variables
+export HISTFILE=~/.zsh_history
+export HISTSIZE=20000
+export SAVEHIST=100000
+
+export LOGCHECK=600
+export MAILCHECK=0
+
+# Prompt
+autoload -Uz promptinit
+promptinit
+
+export PROMPT="%m:[%B%U%j%u%b]%3~> "
+
+# Options
+setopt append_history
+setopt interactive
+setopt login
+setopt nobeep
+setopt nonomatch
+setopt notify
+setopt extended_history
+setopt extendedglob
+
+# Aliases
+# TODO these could become portable with the right syntax
+if [[ -x ${commands[alpine]} ]]; then
+    alias alpine_remote="alpine -p {npjh.com/user=adam@npjh.com/novalidate-cert/ssl}INBOX.remote_pinerc"
+fi
+
+if [[ -x ${commands[aptitude]} ]]; then
+    alias a="aptitude"
+fi
+
+# Git
+if [[ -x ${commands[git]} ]]; then
+    alias b="git branch"
+    alias c="git checkout"
+    alias g="git grep -n"
+    alias s="git status"
+    alias d="git diff"
+    alias l="git log"
+    alias t="git tag"
+fi
+
+# Key bindings
+bindkey -e
+
+# Completion
+autoload -Uz compinit
+compinit
+
+# Cache all completions
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+zstyle ':completion:*:(cd|mv|cp):*' ignore-parents parent pwd
+zstyle ':completion:*:(rm|kill|diff):*' ignore-line yes
+
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# no functions for programs i dont have
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+autoload -U colors && colors
+
+# Functions
+__src_reload () {
+	autoload -U zrecompile
+	[ -f ~/.zshrc ] && zrecompile -p ~/.zshrc
+	[ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
+	[ -f ~/.zshrc.zwc.old ] && rm -f ~/.zshrc.zwc.old
+	[ -f ~/.zcompdump.zwc.old ] && rm -f ~/.zcompdump.zwc.old
+	source ~/.zshrc
+}
+
+function status() {
+  print ""
+  print "Date..: "$(date "+%Y-%m-%d %H:%M:%S")""
+  print "Shell.: Zsh $ZSH_VERSION (PID = $$, $SHLVL nests)"
+  print "Term..: $TTY ($TERM), $BAUD bauds, $COLUMNS x $LINES cars"
+  print "Login.: $LOGNAME (UID = $EUID) on $HOST"
+  print "System: $OSTYPE"
+  print "Uptime:$(uptime)"
+  print ""
+}
