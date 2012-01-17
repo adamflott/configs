@@ -1,0 +1,80 @@
+set nocompatible                " Use Vim defaults instead of 100% vi compatibility
+set backspace=indent,eol,start  " more powerful backspacing
+
+set autoindent                  " always set auto-indenting on
+set hidden                      " allow to cycle and hide modified buffers
+set esckeys                     " allow usage of curs keys within insert mode
+set timeout
+set ttimeoutlen=10
+set timeoutlen=500              " set timout for esc to 50ms
+
+
+set listchars=eol:\ ,tab:\ \ ,trail:-,extends:>,precedes:<
+set list
+
+set lazyredraw                  " [VIM5];  do not update screen while executing macros
+set magic                       " Use some magic in search patterns?  Certainly!
+set nomodeline                  " Allow the last line to be a modeline - useful when
+                                " the last line in sig gives the preferred text-width
+                                " for replies.
+set modelines=5
+set pastetoggle=<F10>
+
+set nonumber                    " Enable line numbers in GUI later
+set report=100                  " show a report when N lines were changed.
+                                " report=0 thus means "show all changes"!
+
+set laststatus=2                " show status line?  Yes, always!
+set ruler                       " show cursor position?  Yep!
+set statusline=[\ %f%m\ %r%y\ %=\ hex:%B\ \ %l,%c%V\ \ %P\ ]
+
+set shiftwidth=4                " Number of spaces to use for each insertion of
+                                " (auto)indent.
+"set shortmess=mnrwxI            " Kind of messages to show.
+set scrolloff=0                 " context
+set noshowcmd                   " Show current uncompleted command?  Absolutely!
+set noshowmatch                 " Don't show the matching bracket for the last ')'?
+set showmode                    " Show the current mode?  YEEEEEEEEESSSSSSSSSSS!
+set cmdheight=1
+
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.cmi,.cmo
+                                " Suffixes to ignore in file completion
+
+set tabstop=8                   " tabstop
+set softtabstop=4               " sts
+set expandtab                   " expand tabs
+set notextmode                  " no - I am using Vim on UNIX!
+set textwidth=0                 " Don't wrap words by default
+set notitle                     " Permet de voir le tit. du doc. crt. ds les XTERM
+set viminfo='1000,/1000,:1000,<1000,@1000,n~/.viminfo
+set history=1000
+                                " What info to store from an editing session
+                                " in the viminfo file;  can be used at next session.
+set sessionoptions-=blank
+set sessionoptions-=folds
+
+set ignorecase                  " Do case insensitive matching
+set noincsearch                 " NO Incremental search
+set nohlsearch                  " NO hilight search
+set nowrapscan
+
+
+set whichwrap=<,>,[,]           "
+set wildchar=<TAB>              " the char used for "expansion" on the command line
+                                " default value is "<C-E>" but I prefer the tab key:
+set wildmenu                    " Completion on the command line shows a menu
+set wildmode=longest,full
+set winminheight=1              " Minimum height of VIM's windows opened
+set wrapmargin=1
+set nowritebackup
+set foldmethod=marker
+
+" Keyboard Mappings
+" -----------------
+" Don't use Ex mode, use Q for formatting
+map Q gq
+map <F6> :bprevious<CR>  " map F1 to open previous buffer
+map <F7> :bnext<CR>      " map F2 to open next buffer
+map <C-J> vipgq
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>
