@@ -1,0 +1,78 @@
+! uxterm
+
+!! colors
+
+UXTerm*cursorColor: rgb:00/80/00
+UXTerm*pointerColor: rgb:00/80/00
+UXTerm*background: white
+UXTerm*foreground: black
+
+!!! Black
+UXTerm*color0:  #2E3436
+UXTerm*color8:  #555753
+
+!!! Red
+UXTerm*color1:  #990033
+UXTerm*color9:  #990000
+
+!!! Green
+UXTerm*color2:  #4E9A06
+UXTerm*color10: #8AE234
+
+!!! Yellow
+UXTerm*color3:  #C4A000
+UXTerm*color11: #E2C803
+
+!!! Blue
+UXTerm*color4:  #3465A4
+UXTerm*color12: #729FCF
+
+!!! Purple
+UXTerm*color5:  #75507B
+UXTerm*color13: #AD7FA8
+
+!!! Cyan
+UXTerm*color6:  #06989A
+UXTerm*color14: #32CECE
+
+!!! White
+UXTerm*color7:  #ffffff
+UXTerm*color15: #EEEEEC
+
+UXTerm*colorBD: black
+UXTerm*colorIT: black
+UXTerm*colorUL: black
+UXTerm*underlineColor:   red
+
+UXTerm*scrollstyle:      plain
+UXTerm*secondaryScroll:  true
+
+UXTerm*saveLines:        8192
+
+UXTerm*visualBell:       false
+
+!! Disable fonts in favor of Debians uxterm doing the right thing
+UXTerm*font:             -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+UXTerm*boldFont:         -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+UXTerm*italicFont:       -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+UXTerm*boldItalicFont:   -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+UXTerm.*boldMode: false
+
+UXTerm*borderLess:        false
+UXTerm*externalBorder:        0
+UXTerm*internalBorder:        5
+
+UXTerm*cursorBlink:        false
+UXTerm*inheritPixmap:      false
+
+UXTerm*scrollTtyOutput:    false
+UXTerm*scrollTtyKeypress:  true
+!!!UXTerm*scrollBar:          true
+!!!UXTerm*rightScrollBar:     false
+
+!! Xterm/UXTerm is dumb (in debian) and needs this to get Alt_L recognized as Meta
+UXTerm*eightBitInput: false
+XTerm*eightBigInput: false
+
+! emacs
+Emacs*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1

@@ -1,0 +1,22 @@
+! Swap Caps_Lock and Control_L
+remove Lock = Caps_Lock
+remove Control = Control_L
+keysym Control_L = Caps_Lock
+keysym Caps_Lock = Control_L
+add Control = Control_L
+
+! Make Apple key act as meta
+!add mod1 = Super_L
+
+! Apple keyboard keys
+! TODO make these only load on certain systems
+!keycode 156 = Meta_L
+!keycode 133 = Meta_L
+!keycode 160 = XF86AudioMute
+!keycode 174 = XF86AudioLowerVolume
+!keycode 176 = XF86AudioRaiseVolume
+!keycode 191 = F13
+!keycode 192 = F14
+!keycode 193 = F15
+!keycode 194 = F16
+!keycode 169 = XF86Eject
