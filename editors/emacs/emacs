@@ -1,0 +1,90 @@
+; Adam Flott's main GNU Emacs configuration
+;
+; Copyright (c) 2011 Bozhidar Batsov <bozhidar.batsov@gmail.com>
+;     URL: http://www.emacswiki.org/cgi-bin/wiki/Prelude
+;
+; Copyright (C) 2012  Adam Flott
+;
+; ------------------------------------------------------------------------------
+;
+; License:
+; 
+;  This program is free software: you can redistribute it and/or modify
+;  it under the terms of the GNU General Public License as published by
+;  the Free Software Foundation, either version 3 of the License, or
+;  (at your option) any later version.
+; 
+;  This program is distributed in the hope that it will be useful,
+;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;  GNU General Public License for more details.
+; 
+;  You should have received a copy of the GNU General Public License
+;  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+;
+; ------------------------------------------------------------------------------
+;
+; Note:
+;
+;  Most of the Emacs configuration was forked from Bozhidar Batsov emacs-prelude
+;  (http://www.emacswiki.org/cgi-bin/wiki/Prelude). I had to change far too many
+;  things to incorporate into the original work. The reality is, I don't know
+;  Lisp nor Emacs Lisp well enough to work around Bozhidar's defaults. Many
+;  thanks to him for showing me the way to a better Emacs experience.
+
+(message "%s" "Emacs Prelude is powering up. Be patient, Master.")
+
+;; On OS X Emacs doesn't use the shell PATH if it's not started from
+;; the shell. If you're using homebrew modifying the PATH is essential.
+(if (eq system-type 'darwin)
+    (push "/usr/local/bin" exec-path))
+
+(defvar prelude-dir (concat (file-name-directory load-file-name) "prelude/")
+  "The root dir of the Emacs Prelude distribution.")
+(defvar prelude-modules-dir (concat prelude-dir "modules/")
+  "This directory houses all of the built-in Prelude module. You should
+avoid modifying the configuration there.")
+(defvar prelude-vendor-dir (concat prelude-dir "vendor/")
+  "This directory house Emacs Lisp packages that are not yet available in
+ELPA (or Marmalade).")
+
+;(add-to-list 'load-path "/home/aflott/src/adam/conf2/editors/emacs/prelude/")
+;(add-to-list 'load-path "/home/aflott/src/adam/conf2/editors/emacs/contrib/")
+
+(add-to-list 'load-path prelude-modules-dir)
+(add-to-list 'load-path prelude-vendor-dir)
+
+;; the core stuff
+;(require 'prelude-packages)
+;(require 'prelude-el-get)
+(require 'prelude-ui)
+(require 'prelude-core)
+(require 'prelude-editor)
+(require 'prelude-global-keybindings)
+
+;; programming & markup languages support
+(require 'prelude-programming)
+(require 'prelude-c)
+(require 'prelude-clojure)
+(require 'prelude-coffee)
+(require 'prelude-common-lisp)
+(require 'prelude-emacs-lisp)
+(require 'prelude-erc)
+(require 'prelude-groovy)
+(require 'prelude-haskell)
+(require 'prelude-js)
+(require 'prelude-latex)
+(require 'prelude-markdown)
+(require 'prelude-org)
+(require 'prelude-perl)
+(require 'prelude-python)
+(require 'prelude-ruby)
+(require 'prelude-scheme)
+(require 'prelude-xml)
+
+(message "%s" "Emacs Prelude is ready to do thy bidding, Master!")
+
+;;; init.el ends here
+
+
+
