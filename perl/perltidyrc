@@ -1,0 +1,13 @@
+-i=4    # Indent 4 spaces
+-l=120  # Maximum line length
+-ci=2   # Continuatioin indentation
+-nola   # No outdenting of labels
+-pt=2   # Parens tightness
+-sbt=1  # Square bracket tightness
+-bt=2   # Brace tightness
+-nsfs   # No for semicolon
+-sak=1  # Add space between keyword and opeing paren
+-bar    # Opening brace always on right
+-vt=0   # Always break line after {
+-vtc=0  # Always break line befor }
+#-lbl
