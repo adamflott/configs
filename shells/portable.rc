@@ -67,7 +67,6 @@ alias o2h="perl -e 'printf qq|%X\n|, oct( shift )'"
 alias o2d="perl -e 'printf qq|%d\n|, oct( shift )'"
 alias o2b="perl -e 'printf qq|%b\n|, oct( shift )'"
 
-
 ## media
 alias soma.fm-doomed='mplayer -nocache http://voxsc1.somafm.com:8300'
 
@@ -82,7 +81,7 @@ if [[ `uname` == "GNU/Linux" ]]; then
         cat /proc/$1/environ|perl -le 'print join("\n", split(chr 0, <>))' | sort
     }
     
-    function print_temp {
+    function print_temp() {
         cat /proc/acpi/thermal_zone/THRM/temperature | perl -le '$c = <>; $c =~ /(\d+)/; $c = $1; printf("%02.1f f\n", ((9/5) * $c) + 32);'
     }
 fi
@@ -97,7 +96,7 @@ function lstree() {
 }
 
 ## perl
-function perl_version {
+function perl_version() {
     perl -le 'use Config;
 $p = $Config{perlpath};
 if ($^O ne "VMS") {
