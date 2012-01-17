@@ -1,0 +1,29 @@
+# MPlayer configuration file
+#
+# Note: Linux specific
+
+# Video Settings
+# --------------------------------------------------------------------------------
+
+## output
+vo=xv
+
+## fullscreen
+fs=yes
+
+# Other
+# --------------------------------------------------------------------------------
+
+## drop frames to preserve audio/video sync
+framedrop = yes
+
+## use 8MB input cache by default
+cache = 8192
+
+# disable xscreensaver during play
+stop-xscreensaver = 1
+
+# Video Filters
+# --------------------------------------------------------------------------------
+
+vf-add=screenshot
