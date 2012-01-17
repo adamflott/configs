@@ -1,0 +1,56 @@
+;; Adam Flott's Perforce specific Emacs init file
+;;
+;; This includes:
+;;
+;; - line numbers
+;; - columns
+;; - show date/time in status bar
+;; - line length 80 chars
+;; - key bindings
+;; - turns on spell checking
+;; - and best of all, moves the point to the beginning of input and removes the
+;;   enter description message
+;;
+;; call with:
+;;
+;;     P4EDITOR=emacs -nw --no-init-file --load ~/.emacs-p4
+;;
+;; or similar
+
+(menu-bar-mode 0)
+
+(if window-system (menu-bar-mode 1))
+
+; Time and date in status bar
+(setq display-time-day-and-date t display-time-24hr-format t)
+(display-time)
+
+; Turn line/column numbers on
+(line-number-mode t)
+(column-number-mode t)
+
+; Add a new line to the end of files
+(setq require-final-newline t)
+
+; Lines shouldn't be longer than 80 chars
+(setq fill-column 80)
+
+; Key mapping
+(setq x-super-keysym 'meta)
+(global-set-key "\C-xg" 'goto-line)
+(global-set-key [(control backspace)] 'join-line)
+
+(defun amf-move-to-message-error ()
+  (if (search-forward "<enter description here>" nil t nil)
+      (replace-match ""))
+)
+
+; Turn on spell checking and auto fill
+(setq-default major-mode 'text-mode)
+(dolist (hook '(text-mode-hook))
+    (add-hook hook (lambda () (flyspell-mode 1)))
+    (add-hook hook (lambda () (turn-on-auto-fill)))
+    (add-hook hook (lambda () (amf-move-to-message-error)))
+)
+
+(setq flyspell-issue-message-flag nil)

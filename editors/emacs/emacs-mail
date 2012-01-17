@@ -1,0 +1,22 @@
+; Tell (Al)pine generated mail files to go into text-mode
+(add-to-list 'auto-mode-alist '("\/tmp\/pico.[0-9]+$" . text-mode))
+
+; Turn on spell checking and auto fill
+(dolist (hook '(text-mode-hook))
+    (add-hook hook (lambda () (flyspell-mode 1)))
+    (add-hook hook (lambda () (turn-on-auto-fill))))
+
+(setq flyspell-issue-message-flag nil)
+
+; Show date/time in status bar, and use 24 hour time
+(setq display-time-day-and-date t display-time-24hr-format t)
+(display-time)
+
+; Show line and column numbers
+(line-number-mode t)
+(column-number-mode t)
+
+; No more than 80 characters per line
+(setq-default fill-column 80)
+
+(menu-bar-mode 0)
