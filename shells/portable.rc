@@ -1,0 +1,116 @@
+# "Portable" shell config
+
+# Most sane shells should be able to interpret these statements correctly
+
+ulimit -c unlimited
+
+umask 022
+
+# Shell variables
+# --------------------------------------------------------------------------------
+export EDITOR="emacs"
+export PAGER="less"
+export PATH=$HOME/bin:$PATH
+export VISUAL="emacs"
+
+## programs
+export ACK_OPTIONS="-a"
+export LESS="-R"
+export P4EDITOR="emacs -nw --no-init-file --load ~/.emacs-p4"
+
+# Aliases
+# --------------------------------------------------------------------------------
+## system
+alias j="jobs"
+alias memtop="ps aux | sort -nk +4 | tail"
+
+## ls
+alias ls="ls -p"
+alias ll="ls -l"
+alias lt="ls -lt"
+alias lth="ls -lt | head"
+
+## file(s) manipulation
+alias cp="cp -i"
+alias mv="mv -i"
+alias largest30files="find . -printf '%s %p\n'|sort -nr|head -30|less"
+
+## editors
+alias e="emacs -q -nw"
+alias em2="TERM=xterm-256color emacs -nw"
+alias em="emacs -nw"
+alias emacs-byte-compile="emacs -batch -f batch-byte-compile"
+alias gvi="gvim"
+alias v=$PAGER
+
+## perl
+alias pl="perl -lE"
+alias ple="perl -le"
+alias ples="perl -Mstrict -w -le"
+alias plprototype="perl -le 'print prototype qq<CORE::@{[+shift]}>'"
+alias sedp="perl -lne"
+alias swp="perl -Mstrict -w -le "
+alias swpd="perl -Mstrict -MData::Dumper -w -le "
+
+## number conversion
+alias b2d="perl -e 'print(unpack(q(N), pack(q(B32), substr(q(0) x 32 . shift, -32))))'"
+
+alias d2h="perl -e 'printf qq|%X\n|, int( shift )'"
+alias d2o="perl -e 'printf qq|%o\n|, int( shift )'"
+alias d2b="perl -e 'printf qq|%b\n|, int( shift )'"
+
+alias h2d="perl -e 'printf qq|%d\n|, hex( shift )'"
+alias h2o="perl -e 'printf qq|%o\n|, hex( shift )'"
+alias h2b="perl -e 'printf qq|%b\n|, hex( shift )'"
+
+alias o2h="perl -e 'printf qq|%X\n|, oct( shift )'"
+alias o2d="perl -e 'printf qq|%d\n|, oct( shift )'"
+alias o2b="perl -e 'printf qq|%b\n|, oct( shift )'"
+
+
+## media
+alias soma.fm-doomed='mplayer -nocache http://voxsc1.somafm.com:8300'
+
+
+# Functions
+# --------------------------------------------------------------------------------
+
+## system
+if [[ `uname` == "GNU/Linux" ]]; then
+    
+    function dump_proc_env() {
+        cat /proc/$1/environ|perl -le 'print join("\n", split(chr 0, <>))' | sort
+    }
+    
+    function print_temp {
+        cat /proc/acpi/thermal_zone/THRM/temperature | perl -le '$c = <>; $c =~ /(\d+)/; $c = $1; printf("%02.1f f\n", ((9/5) * $c) + 32);'
+    }
+fi
+
+## file
+function delete_empty_dirs() {
+    find -depth -type d -empty -exec rmdir {} \;
+}
+
+function lstree() {
+    ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
+}
+
+## perl
+function perl_version {
+    perl -le 'use Config;
+$p = $Config{perlpath};
+if ($^O ne "VMS") {
+    $p .= $Config{_exe} unless ($p =~ m/$Config{_exe}$/i);
+}
+printf("%s is version: %vd\n", $p, $^V)'
+}
+
+function perl_view_typemap() {
+    $PAGER `perl -MConfig -MFile::Spec::Functions -le 'print catfile($Config{installprivlib},"ExtUtils","typemap")'`
+}
+
+## web
+function webservethisdir() {
+    python -m SimpleHTTPServer
+}
