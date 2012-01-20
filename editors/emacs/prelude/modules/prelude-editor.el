@@ -46,6 +46,9 @@
 ;; Death to the tabs!
 (setq-default indent-tabs-mode nil)
 
+;; Always add new line
+(setq require-final-newline t)
+
 ;; delete the selection with a keypress
 (delete-selection-mode t)
 
