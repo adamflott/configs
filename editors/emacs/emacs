@@ -37,9 +37,11 @@
 ;; On OS X Emacs doesn't use the shell PATH if it's not started from
 ;; the shell. If you're using homebrew modifying the PATH is essential.
 (if (eq system-type 'darwin)
-    (push "/usr/local/bin" exec-path))
+    (push "/usr/local/bin" exec-path)
+    (push "/opt/local/bin" exec-path)
+)
 
-(defvar prelude-dir (concat (file-name-directory load-file-name) "prelude/")
+(defvar prelude-dir (concat (file-name-directory (file-symlink-p load-file-name)) "prelude/")
   "The root dir of the Emacs Prelude distribution.")
 (defvar prelude-modules-dir (concat prelude-dir "modules/")
   "This directory houses all of the built-in Prelude module. You should
@@ -47,16 +49,16 @@ avoid modifying the configuration there.")
 (defvar prelude-vendor-dir (concat prelude-dir "vendor/")
   "This directory house Emacs Lisp packages that are not yet available in
 ELPA (or Marmalade).")
-
-;(add-to-list 'load-path "/home/aflott/src/adam/conf2/editors/emacs/prelude/")
-;(add-to-list 'load-path "/home/aflott/src/adam/conf2/editors/emacs/contrib/")
+(defvar prelude-contrib-dir (concat (file-name-directory (file-symlink-p load-file-name)) "contrib/")
+  "This directory house Emacs Lisp packages not in prelude or ELPA (or Marmalade).")
 
 (add-to-list 'load-path prelude-modules-dir)
 (add-to-list 'load-path prelude-vendor-dir)
+(add-to-list 'load-path prelude-contrib-dir)
 
 ;; the core stuff
-;(require 'prelude-packages)
-;(require 'prelude-el-get)
+(require 'prelude-packages)
+(require 'prelude-el-get)
 (require 'prelude-ui)
 (require 'prelude-core)
 (require 'prelude-editor)
@@ -65,26 +67,12 @@ ELPA (or Marmalade).")
 ;; programming & markup languages support
 (require 'prelude-programming)
 (require 'prelude-c)
-(require 'prelude-clojure)
-(require 'prelude-coffee)
 (require 'prelude-common-lisp)
 (require 'prelude-emacs-lisp)
-(require 'prelude-erc)
-(require 'prelude-groovy)
-(require 'prelude-haskell)
-(require 'prelude-js)
 (require 'prelude-latex)
 (require 'prelude-markdown)
-(require 'prelude-org)
 (require 'prelude-perl)
 (require 'prelude-python)
-(require 'prelude-ruby)
-(require 'prelude-scheme)
 (require 'prelude-xml)
 
 (message "%s" "Emacs Prelude is ready to do thy bidding, Master!")
-
-;;; init.el ends here
-
-
-
