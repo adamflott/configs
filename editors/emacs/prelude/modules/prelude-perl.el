@@ -33,7 +33,7 @@
 ;;; Code:
 
 ;; use cperl-mode instead of perl-mode
-;(defalias 'perl-mode 'cperl-mode)
+(defalias 'perl-mode 'cperl-mode)
 
 (defun prelude-cperl-mode-hook ()
   (setq cperl-indent-level 4)
