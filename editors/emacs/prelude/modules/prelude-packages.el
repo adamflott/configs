@@ -39,9 +39,9 @@
 (package-initialize)
 
 ;; check for new packages (package versions)
-(message "%s" "Emacs Prelude is now refreshing its package database...")
-(package-refresh-contents)
-(message "%s" " done.")
+;(message "%s" "Emacs Prelude is now refreshing its package database...")
+;(package-refresh-contents)
+;(message "%s" " done.")
 
 (defvar prelude-packages
   '(auctex clojure-mode coffee-mode deft gist groovy-mode haml-mode
