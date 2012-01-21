@@ -5,17 +5,3 @@
 # All portable shell functions, aliases, etc should go here. This file
 # is Bash specific
 source $ROOT/.shells/portable.rc
-
-# Aliases
-# --------------------------------------------------------------------------------
-# TODO move to portable.rc
-if [[ -x `which git` ]]; then
-    alias b="git branch"
-    alias c="git checkout"
-    alias g="git grep -n"
-    alias s="git status"
-    alias d="git diff"
-    alias l="git log"
-    alias t="git tag"
-fi
-

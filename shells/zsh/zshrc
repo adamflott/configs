@@ -13,6 +13,11 @@ fi
 # is ZSH specific
 source $ROOT/.shells/portable.rc
 
+# Load extra options per host
+if [ -f ~/.shells/hosts/`hostname -f`-zsh.rc ]; then
+    source ~/.shells/hosts/`hostname -f`-zsh.rc
+fi
+
 # Shell variables
 export HISTFILE=~/.zsh_history
 export HISTSIZE=20000
@@ -38,25 +43,6 @@ setopt extended_history
 setopt extendedglob
 
 # Aliases
-# TODO these could become portable with the right syntax
-if [[ -x ${commands[alpine]} ]]; then
-    alias alpine_remote="alpine -p {npjh.com/user=adam@npjh.com/novalidate-cert/ssl}INBOX.remote_pinerc"
-fi
-
-if [[ -x ${commands[aptitude]} ]]; then
-    alias a="aptitude"
-fi
-
-# Git
-if [[ -x ${commands[git]} ]]; then
-    alias b="git branch"
-    alias c="git checkout"
-    alias g="git grep -n"
-    alias s="git status"
-    alias d="git diff"
-    alias l="git log"
-    alias t="git tag"
-fi
 
 # Key bindings
 bindkey -e
@@ -77,8 +63,12 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+if [[ -x ${commands[dircolors]} ]]; then
+   eval "$(dircolors -b)"
+   zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+fi
+
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'

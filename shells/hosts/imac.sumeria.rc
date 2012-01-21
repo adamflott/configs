@@ -1,2 +1,0 @@
-# Variables
-export PATH=$PATH:$HOME/Applications:/opt/local/bin
