@@ -40,9 +40,12 @@
   (tool-bar-mode -1))
 ;; the menu bar is mostly useless as well
 (if window-system (menu-bar-mode 1))
-;; but removing it under OS X doesn't make much sense
+;; OSX
 (if (eq system-type 'darwin)
-  (menu-bar-mode -1))
+    (setq mac-allow-anti-aliasing nil)
+    (aquamacs-autoface-mode 0)
+    (set-default-font " -apple-Monaco-medium-normal-normal-*-10-*-*-*-m-0-fontset-auto1")
+)
 ;; the blinking cursor is nothing, but an annoyance
 (blink-cursor-mode -1)
 
