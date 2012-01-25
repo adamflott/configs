@@ -8,8 +8,7 @@
 ;; - line length 80 chars
 ;; - key bindings
 ;; - turns on spell checking
-;; - and best of all, moves the point to the beginning of input and removes the
-;;   enter description message
+;; - and best of all, moves the point to the enter description area when submitting
 ;;
 ;; call with:
 ;;
@@ -32,9 +31,6 @@
 ; Add a new line to the end of files
 (setq require-final-newline t)
 
-; Lines shouldn't be longer than 80 chars
-(setq fill-column 80)
-
 ; Key mapping
 (setq x-super-keysym 'meta)
 (global-set-key "\C-xg" 'goto-line)
@@ -51,6 +47,7 @@
     (add-hook hook (lambda () (flyspell-mode 1)))
     (add-hook hook (lambda () (turn-on-auto-fill)))
     (add-hook hook (lambda () (amf-move-to-message-error)))
+    (add-hook hook (lambda () (setq fill-column 80)))
 )
 
 (setq flyspell-issue-message-flag nil)
