@@ -133,6 +133,11 @@ function webservethisdir() {
     python -m SimpleHTTPServer
 }
 
+## transform
+function dump-pdf-text() {
+    pdftotext -layout | "$1" - | fmt | less
+}
+
 # Load extra options per host
 if [ -f ~/.shells/hosts/`hostname -f`-portable.rc ]; then
     source ~/.shells/hosts/`hostname -f`-portable.rc
