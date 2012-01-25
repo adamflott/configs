@@ -41,7 +41,7 @@
 ;; the menu bar is mostly useless as well
 (if window-system (menu-bar-mode 1))
 ;; OSX
-(if (eq system-type 'darwin)
+(when (eq system-type 'darwin)
     (setq mac-allow-anti-aliasing nil)
     (aquamacs-autoface-mode 0)
     (set-default-font " -apple-Monaco-medium-normal-normal-*-10-*-*-*-m-0-fontset-auto1")
