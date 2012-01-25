@@ -86,7 +86,7 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 autoload -U colors && colors
 
 # Functions
-__src_reload () {
+function __src_reload () {
 	autoload -U zrecompile
 	[ -f ~/.zshrc ] && zrecompile -p ~/.zshrc
 	[ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
