@@ -61,6 +61,8 @@ alias gvi="gvim"
 alias v=$PAGER
 
 ## perl
+function awkpf() { S=$1; shift; perl -F"$S" -lnaE "$@" }
+alias awkp="perl -lnaE"
 alias pl="perl -lE"
 alias ple="perl -le"
 alias ples="perl -Mstrict -w -le"
@@ -129,6 +131,11 @@ function perl_view_typemap() {
 ## web
 function webservethisdir() {
     python -m SimpleHTTPServer
+}
+
+## transform
+function dump-pdf-text() {
+    pdftotext -layout | "$1" - | fmt | less
 }
 
 # Load extra options per host
