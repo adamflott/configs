@@ -84,24 +84,3 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 zstyle ':completion:*:functions' ignored-patterns '_*'
 
 autoload -U colors && colors
-
-# Functions
-function __src_reload () {
-	autoload -U zrecompile
-	[ -f ~/.zshrc ] && zrecompile -p ~/.zshrc
-	[ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
-	[ -f ~/.zshrc.zwc.old ] && rm -f ~/.zshrc.zwc.old
-	[ -f ~/.zcompdump.zwc.old ] && rm -f ~/.zcompdump.zwc.old
-	source ~/.zshrc
-}
-
-function status() {
-  print ""
-  print "Date..: "$(date "+%Y-%m-%d %H:%M:%S")""
-  print "Shell.: Zsh $ZSH_VERSION (PID = $$, $SHLVL nests)"
-  print "Term..: $TTY ($TERM), $BAUD bauds, $COLUMNS x $LINES cars"
-  print "Login.: $LOGNAME (UID = $EUID) on $HOST"
-  print "System: $OSTYPE"
-  print "Uptime:$(uptime)"
-  print ""
-}
