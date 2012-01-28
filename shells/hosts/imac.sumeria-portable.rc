@@ -1,2 +1,4 @@
 # Variables
 export PATH=/opt/local/libexec/gnubin:$PATH:$HOME/Applications:/opt/local/bin
+
+alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
