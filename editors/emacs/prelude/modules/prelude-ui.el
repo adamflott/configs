@@ -65,6 +65,8 @@
 ;; enable y/n answers
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(setq font-lock-maximum-decoration 1)
+
 ;; custom Emacs 24 color themes support
 (add-to-list 'custom-theme-load-path (concat prelude-dir "themes/"))
 
