@@ -61,7 +61,9 @@ alias gvi="gvim"
 alias v=$PAGER
 
 ## perl
-function awkpf() { S=$1; shift; perl -F"$S" -lnaE "$@" }
+function awkpf() {
+    S=$1; shift; perl -F"$S" -lnaE "$@"
+}
 alias awkp="perl -lnaE"
 alias pl="perl -lE"
 alias ple="perl -le"
