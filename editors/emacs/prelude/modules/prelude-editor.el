@@ -219,6 +219,9 @@
   (interactive "*")
   (uniquify-all-lines-region (point-min) (point-max)))
 
+;; ediff - don't start another frame
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
 (provide 'prelude-editor)
 
 ;;; prelude-editor.el ends here
