@@ -88,8 +88,9 @@ alias o2h="perl -e 'printf qq|%X\n|, oct( shift )'"
 alias o2d="perl -e 'printf qq|%d\n|, oct( shift )'"
 alias o2b="perl -e 'printf qq|%b\n|, oct( shift )'"
 
-alias epoch2readable="perl -MDateTime= -le 'print DateTime->from_epoch(epoch => shift)'"
-
+## date/time
+alias epoch-2-readable="perl -MDateTime= -le 'print DateTime->from_epoch(epoch => shift)'"
+alias epoch-now="perl -MDateTime= -le 'print DateTime->now->epoch'"
 
 # Functions
 # --------------------------------------------------------------------------------
