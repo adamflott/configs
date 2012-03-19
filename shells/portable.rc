@@ -78,7 +78,7 @@ alias b2d="perl -e 'print(unpack(q(N), pack(q(B32), substr(q(0) x 32 . shift, -3
 
 alias d2h="perl -e 'printf qq|%X\n|, int( shift )'"
 alias d2o="perl -e 'printf qq|%o\n|, int( shift )'"
-alias d2b="perl -e 'printf qq|%b\n|, int( shift )'"
+alias d2b="perl -le 'print unpack( q(B64), pack( q(Q>), int shift ) )'"
 
 alias h2d="perl -e 'printf qq|%d\n|, hex( shift )'"
 alias h2o="perl -e 'printf qq|%o\n|, hex( shift )'"
