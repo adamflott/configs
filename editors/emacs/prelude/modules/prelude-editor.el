@@ -195,7 +195,8 @@
      anything-c-source-man-pages
      anything-c-source-etags-select
      anything-c-source-emacs-commands
-     anything-c-source-emacs-commands
+     anything-c-source-occur
+     anything-c-source-kill-ring
      )
    " *amf-anything*"))
 
