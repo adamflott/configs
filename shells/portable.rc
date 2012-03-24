@@ -92,6 +92,8 @@ alias o2b="perl -e 'printf qq|%b\n|, oct( shift )'"
 alias epoch-2-readable="perl -MDateTime= -le 'print DateTime->from_epoch(epoch => shift)'"
 alias epoch-now="perl -MDateTime= -le 'print DateTime->now->epoch'"
 
+alias radio-death-fm="mplayer -nocache http://hi5.death.fm"
+
 # Functions
 # --------------------------------------------------------------------------------
 
