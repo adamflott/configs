@@ -43,7 +43,6 @@
 ;; OSX
 (when (eq system-type 'darwin)
     (setq mac-allow-anti-aliasing nil)
-    (aquamacs-autoface-mode 0)
     (set-default-font " -apple-Monaco-medium-normal-normal-*-10-*-*-*-m-0-fontset-auto1")
 )
 ;; the blinking cursor is nothing, but an annoyance
