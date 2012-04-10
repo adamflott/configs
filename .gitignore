@@ -4,4 +4,5 @@ editors/emacs/d/recentf
 editors/emacs/d/savehist
 editors/emacs/d/saveplace
 editors/emacs/d/elpa
+editors/emacs/d/semanticdb
 *.elc
