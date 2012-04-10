@@ -14,7 +14,6 @@ export PATH=$HOME/bin:$PATH
 export VISUAL="emacs"
 
 ## programs
-export ACK_OPTIONS="-a"
 export LESS="-R"
 export P4EDITOR="emacs -nw --no-init-file --load ~/.emacs-p4"
 
