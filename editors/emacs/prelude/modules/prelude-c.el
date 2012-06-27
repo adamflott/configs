@@ -33,7 +33,7 @@
 ;;; Code:
 
 (defun prelude-c-mode-common-defaults ()
-  (setq indent-tabs-mode t)
+  (setq indent-tabs-mode nil)
   (setq c-basic-offset 4))
 
 (setq prelude-c-mode-common-hook 'prelude-c-mode-common-defaults)
