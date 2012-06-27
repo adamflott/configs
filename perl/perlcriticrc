@@ -3,7 +3,9 @@ force     = 0
 verbose   = 5
 theme     = (pbp || security) && bugs
 
-include = Bangs::ProhibitFlagComments CodeLayout::ProhibitHardTabs CodeLayout::ProhibitHashBarewords Documentation::RequireEndBeforeLastPod Documentation::RequirePodAtEnd InputOutput::ProhibitBarewordFileHandles Modules::ProhibitPOSIXimport PodSpelling ProhibitCommentedOutCode ProhibitFlagComments RequireNoMatchVarsWithUseEnglish Subroutines::ProhibitAmpersandSigils Subroutines::ProhibitAmpersandsSigils Subroutines::ProhibitBuiltinHomonyms ValuesAndExpressions::ProhibitEmptyCommas ValuesAndExpressions::ProhibitInterpolationOfLiterals ValuesAndExpressions::ProhibitNullStatements Perl::Critic::Policy::Moose::ProhibitMultipleWiths Perl::Critic::Policy::Moose::ProhibitNewMethod Perl::Critic::Policy::Moose::RequireCleanNamespace Perl::Critic::Policy::Moose::RequireMakeImmutable
+include = Bangs::ProhibitFlagComments CodeLayout::ProhibitHardTabs CodeLayout::ProhibitHashBarewords Documentation::RequireEndBeforeLastPod Documentation::RequirePodAtEnd InputOutput::ProhibitBarewordFileHandles Modules::ProhibitPOSIXimport PodSpelling ProhibitCommentedOutCode ProhibitFlagComments RequireNoMatchVarsWithUseEnglish Subroutines::ProhibitAmpersandSigils Subroutines::ProhibitAmpersandsSigils Subroutines::ProhibitBuiltinHomonyms ValuesAndExpressions::ProhibitEmptyCommas ValuesAndExpressions::ProhibitInterpolationOfLiterals ValuesAndExpressions::ProhibitNullStatements Perl::Critic::Policy::Moose::ProhibitMultipleWiths Perl::Critic::Policy::Moose::ProhibitNewMethod Perl::Critic::Policy::Moose::RequireCleanNamespace Perl::Critic::Policy::Moose::RequireMakeImmutable NamingConventions::Capitalization
 
 [Bangs::ProhibitFlagComments]
 keywords = XXX TODO FIXME BUG REVIEW TBD xxx todo fixme
+
+[NamingConventions::Capitalization]
