@@ -1,22 +1,30 @@
-! Swap Caps_Lock and Control_L
-remove Lock = Caps_Lock
-remove Control = Control_L
-keysym Control_L = Caps_Lock
-keysym Caps_Lock = Control_L
-add Control = Control_L
+keycode 118 = Insert
+keycode 191 = Insert
+! Swap Alt and Cmd keys.
+keycode 37 =    Control_L
+keycode 133 =   Alt_L Meta_L
+keycode 64 =    Super_L
+keycode 108 =   Super_R
+keycode 134 =   ISO_Level3_Shift Multi_key
+keycode 105 =   Control_R       Multi_key
+clear Shift
+clear Lock
+clear Control
+clear Mod1
+clear Mod2
+clear Mod3
+clear Mod4
+clear Mod5
+add    Shift   = Shift_L Shift_R
+add    Lock    = Caps_Lock
+add    Control = Control_L Control_R
+add    Mod1    = Alt_L 0x007D
+!some configurations, for example tha italian layout keyboard, will require this:
+!add    Mod1    = Alt_L
+!because the "0x007D" will assign the "+*]" key to the unity menu
+add    Mod2    = Num_Lock
+add    Mod4    = Super_L Super_R
+add    Mod5    = Mode_switch ISO_Level3_Shift ISO_Level3_Shift ISO_Level3_Shift
 
-! Make Apple key act as meta
-!add mod1 = Super_L
-
-! Apple keyboard keys
-! TODO make these only load on certain systems
-!keycode 156 = Meta_L
-!keycode 133 = Meta_L
-!keycode 160 = XF86AudioMute
-!keycode 174 = XF86AudioLowerVolume
-!keycode 176 = XF86AudioRaiseVolume
-!keycode 191 = F13
-!keycode 192 = F14
-!keycode 193 = F15
-!keycode 194 = F16
-!keycode 169 = XF86Eject
+! Configure '=' key on numpad as '='.
+keycode 0x7D =  equal
