@@ -133,7 +133,7 @@ function webserve-this-dir() {
 
 ## transform
 function dump-pdf-text() {
-    pdftotext -layout | "$1" - | fmt | $PAGER
+    pdftotext -layout "$1" - | fmt | $PAGER
 }
 
 function unescape-uri-encoded() {
